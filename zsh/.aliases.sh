@@ -3,6 +3,7 @@ alias cch="~/cc/cch.py &!"
 alias cls=clear
 alias install='sudo apt-get install '
 alias lg='lazygit'
+alias ls=exa
 alias plz=sudo
 alias q=exit
 alias v='xclip -o'
