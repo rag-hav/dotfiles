@@ -1,0 +1,10 @@
+alias c='xclip -selection clipboard'
+alias cch="~/cc/cch.py &!"
+alias cls=clear
+alias install='sudo apt-get install '
+alias lg='lazygit'
+alias plz=sudo
+alias q=exit
+alias v='xclip -o'
+alias vim="lvim"
+alias zsh="source ~/.zshrc"
