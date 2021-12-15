@@ -1,0 +1,26 @@
+QTabBar,
+QTabBar::tab
+{
+        font-family: "Noto Sans";
+        color: ghostwhite;
+        height: 16px;
+        padding: 2px;
+
+        font-size: 16px;
+        /* one dark  */
+        /* background-color: #232627; */
+
+        /* rose pine  */
+        background-color: #191724;
+}
+
+QTabBar::tab:hover
+{
+        text-decoration: underline;
+}
+
+QTabBar::tab:selected
+{
+        font-weight:bold;
+        font-size: 20px;
+}

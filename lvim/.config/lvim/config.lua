@@ -1,8 +1,10 @@
 lvim.log.level = "warn"
+lvim.leader = "space"
 -- lvim.format_on_save = true
 lvim.colorscheme = "rose-pine"
 lvim.builtin.lualine.theme = 'rose-pine';
 vim.opt.timeoutlen = 1000
+vim.opt.cmdheight = 1
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.wrap = true
@@ -36,10 +38,10 @@ lvim.builtin.cmp.completion = {
   completeopt = 'menu,menuone,noinsert,preview',
 }
 
-require("plugin")
-require("cached_format")
-require("keymaps")
 require("abzlualine").config()
+require("cached_format")
 require("functions")
+require("keymaps")
+require("plugin")
 require("plugins/dashboard")
 require("plugins/whichkey")
