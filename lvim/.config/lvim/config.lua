@@ -24,14 +24,13 @@ lvim.builtin.terminal.active = true
 lvim.lsp.diagnostics.virtual_text = false
 
 
+-- keymaps
+lvim.keys.normal_mode["<CR>"] = ":noh<cr><cr>"
 
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
   {"CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics({ focusable=false})"},
-  {"FileType", "cpp", "nnoremap <F5> :w <bar> :TermExec cmd=\"make %:r && ./%:r < in \" direction=vertical size=50 <CR>" },
-  {"BufWinEnter", "*.md,*.txt", "lua Text()" },
-  {"BufWinEnter", "*.md", 'lua require("which-key").register({m={"<cmd>MarkdownPreviewToggle <CR>", "MarkdownPreview"}},  { prefix = "<leader>" })' },
 }
 
 lvim.builtin.cmp.completion = {
@@ -40,8 +39,6 @@ lvim.builtin.cmp.completion = {
 
 require("abzlualine").config()
 require("cached_format")
-require("functions")
-require("keymaps")
 require("plugin")
 require("plugins/dashboard")
 require("plugins/whichkey")

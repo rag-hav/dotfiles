@@ -41,7 +41,8 @@ ftester() {
 		a=$qid
 		b=$qid
 	else
-		if [[ $1=="-t" ]]; then
+		if [[ $1 == "-t" ]]; then
+            echo "yaha"
 			a=${qid}
 			b=${qid}tmp
 		else
@@ -94,7 +95,7 @@ tester() {
 		a=$qid
 		b=$qid
 	else
-		if [[ $1=="-t" ]]; then
+		if [[ $1 == "-t" ]]; then
 			a=${qid}
 			b=${qid}tmp
 		else
@@ -138,7 +139,7 @@ qtester() {
 		a=$qid
 		b=$qid
 	else
-		if [[ $1=="-t" ]]; then
+		if [[ $1 == "-t" ]]; then
 			a=${qid}
 			b=${qid}tmp
 		else
