@@ -63,9 +63,9 @@ ftester() {
 
 		\time -o "timetmp" -f "\nTime Taken %e\nMemory %M" ./$b <$caseIn 1>$caseOut 2>&1
 
-		echo "\n\n********************************************************************************"
+		echo "\n\n****************************"
 		echo "test case: ${i}"
-		echo "********************************************************************************"
+		echo "****************************"
 		echo "\n\ninput: "
 		cat $caseIn
 		echo "\n\noutput: "
@@ -114,7 +114,7 @@ tester() {
 	while [ -e "$caseIn" ]; do
 
 		\time -o "timetmp" -f "\nTime Taken %e\nMemory %M" ./$b <$caseIn 1>$caseOut 2>&1
-		echo "\n\n********************************************************************************"
+		echo "\n\n****************************"
 		echo "test case: ${i}"
 
 		diff -Zsa $caseAns $caseOut || sucess=false
@@ -158,7 +158,7 @@ qtester() {
 	while [ -e "$caseIn" ]; do
 
 		\time -o "timetmp" -f "\nTime Taken %e\nMemory %M" ./$b <$caseIn 1>$caseOut 2>&1
-		echo "\n\n********************************************************************************"
+		echo "\n\n****************************"
 		echo "test case: ${i}"
 
 		diff -Zsaq $caseAns $caseOut || sucess=false
