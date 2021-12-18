@@ -73,7 +73,7 @@ ftester() {
     caseIn=".in_${a}_${i}"
     caseAns=".ans_${a}_${i}"
     caseOut=".out_${a}_${i}"
-    [ -e "$caseIn" ] || echo -e "No test case for ${a}"
+    [ -e "$caseIn" ] || recho "No test case for ${a}"
     while [ -e "$caseIn" ]; do
 
         \time -o "timetmp" -f "\nTime Taken %e\nMemory %M" ./$b <$caseIn 1>$caseOut 2>&1
@@ -125,7 +125,7 @@ tester() {
     caseIn=".in_${a}_${i}"
     caseAns=".ans_${a}_${i}"
     caseOut=".out_${a}_${i}"
-    [ -e "$caseIn" ] || echo -e "No test case for ${a}"
+    [ -e "$caseIn" ] || recho "No test case for ${a}"
     while [ -e "$caseIn" ]; do
 
         \time -o "timetmp" -f "\nTime Taken %e\nMemory %M" ./$b <$caseIn 1>$caseOut 2>&1
@@ -168,7 +168,7 @@ qtester() {
     caseIn=".in_${a}_${i}"
     caseAns=".ans_${a}_${i}"
     caseOut=".out_${a}_${i}"
-    [ -e "$caseIn" ] || echo -e "No test case for ${a}"
+    [ -e "$caseIn" ] || recho "No test case for ${a}"
     i=1
     sucess=true
     while [ -e "$caseIn" ]; do
@@ -233,9 +233,14 @@ solncompare() {
 }
 
 submit() {
+    if [[ -z $1 ]]; then
+        a=$qid
+    else
+        a=$1
+    fi
     subfile="/home/raghav/submit.cpp"
     echo -e "#include <bits/stdc++.h> \n" >$subfile
-    gcc -E "${qid}.cpp" | grep -A 10000 "using namespace std;" | sed "/^#/d" >>$subfile && echo -e "Created $subfile"
+    gcc -E "${a}.cpp" | grep -A 10000 "using namespace std;" | sed "/^#/d" >>$subfile && echo -e "Created $subfile"
 }
 
 precompile() {
