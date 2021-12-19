@@ -27,15 +27,17 @@ end
 
 -- https://stackoverflow.com/a/44058905
 local cached_select_client = (function()
-    local cache={}
+    local cache = {}
     return function(method, on_choice)
-        local buffer_name=vim.api.nvim_get_current_buf()
-        local res=cache[buffer_name]
+        local buffer_name = vim.api.nvim_get_current_buf()
+        local res = cache[buffer_name]
         if not res then
-            res = select_client(method, on_choice)
-            cache[buffer_name]=res
+            select_client(method, function(client)
+                on_choice(client)
+                cache[buffer_name] = client
+            end)
         end
-        return res
+        on_choice(res)
     end
 end)()
 
