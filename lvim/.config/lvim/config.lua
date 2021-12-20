@@ -2,7 +2,7 @@ lvim.log.level = "warn"
 lvim.leader = "space"
 -- lvim.format_on_save = true
 lvim.colorscheme = "rose-pine"
-lvim.builtin.lualine.theme = 'rose-pine';
+lvim.builtin.lualine.theme = "rose-pine"
 vim.opt.timeoutlen = 1000
 vim.opt.cmdheight = 1
 vim.opt.shiftwidth = 4
@@ -15,8 +15,14 @@ lvim.builtin.notify.active = true
 lvim.builtin.global_status_line = { active = true }
 lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.cmp.completion = {
-  completeopt = 'menu,menuone,noinsert,preview',
+	completeopt = "menu,menuone,noinsert,preview",
 }
+
+require("lvim.lsp.null-ls.formatters").setup({
+	{ exe = "black" },
+	{ exe = "prettier" },
+	{ exe = "stylua" },
+})
 
 -- keymaps
 lvim.leader = "space"
@@ -25,11 +31,10 @@ lvim.keys.term_mode["jk"] = "<C-\\><C-n>"
 lvim.keys.term_mode["kj"] = "<C-\\><C-n>"
 lvim.keys.term_mode["<ESC>"] = "<C-\\><C-n>"
 
-
 lvim.lsp.diagnostics.virtual_text = false
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
-  {"CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics({ focusable=false})"},
+	{ "CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics({ focusable=false})" },
 }
 
 require("abzlualine").config()

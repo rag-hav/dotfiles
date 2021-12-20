@@ -1,4 +1,3 @@
-
 lvim.builtin.which_key.mappings["o"] = { "<cmd>Telescope oldfiles<CR>", "Recent files" }
 -- lvim.builtin.which_key.mappings["r"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" }
 lvim.builtin.which_key.mappings["/"] = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Fuzzy find" }
