@@ -1,4 +1,4 @@
-becho() {
+gecho() {
     echo -e "\e[1;32m${1}\e[0m"
 }
 
@@ -10,7 +10,7 @@ recho(){
     echo -e "\e[1;31m${1}\e[0m"
 }
 
-gecho(){
+becho(){
     echo -e "\e[1;34m${1}\e[0m"
 }
 
@@ -69,7 +69,7 @@ ftester() {
 
     make $b || return
     i=1
-    sucess=true
+    local success=true
     caseIn=".in_${a}_${i}"
     caseAns=".ans_${a}_${i}"
     caseOut=".out_${a}_${i}"
@@ -88,7 +88,10 @@ ftester() {
         yecho "\n\nexpected: "
         cat $caseAns
         yecho "\n\ndiff: "
-        diff --color=always -Zas $caseAns $caseOut || sucess=false
+        # remove all comments from input file. gcc -fpreprocessed -dD -E $b.cpp
+        # check if there is "trace" in result. grep
+        # if not, then output diff 
+        grep -q "trace" =(gcc -fpreprocessed -dD -E $b.cpp) && { recho "Skipped..." && success=false } || { diff --color=always -Zsa =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false }
         cat timetmp
         rm timetmp $caseOut
 
@@ -98,8 +101,9 @@ ftester() {
         caseOut=".out_${a}_${i}"
     done
 
-    if [ "$sucess" = true ]; then
+    if [ "$success" = true ]; then
         gecho "Sample test cases passed"
+        submit $b
     else
         recho "Sample test cases failed"
     fi
@@ -121,7 +125,7 @@ tester() {
 
     make ${b} || return
     i=1
-    sucess=true
+    local success=true
     caseIn=".in_${a}_${i}"
     caseAns=".ans_${a}_${i}"
     caseOut=".out_${a}_${i}"
@@ -133,7 +137,8 @@ tester() {
         becho "test case: ${i}"
         becho "****************************"
 
-        diff --color=always -Zsa $caseAns $caseOut || sucess=false
+        grep -q "trace" =(gcc -fpreprocessed -dD -E $b.cpp) && { recho "Skipped..." && success=false } || { diff --color=always -Zsa =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false }
+        grep -q "trace" $b.cpp && { recho "Skipped..." && success=false } || { diff --color=always -Zsa =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false }
         cat timetmp
         rm timetmp $caseOut
 
@@ -143,8 +148,9 @@ tester() {
         caseOut=".out_${a}_${i}"
     done
 
-    if [ "$sucess" = true ]; then
+    if [ "$success" = true ]; then
         gecho "Sample test cases passed"
+        submit $b
     else
         recho "Sample test cases failed"
     fi
@@ -170,7 +176,7 @@ qtester() {
     caseOut=".out_${a}_${i}"
     [ -e "$caseIn" ] || recho "No test case for ${a}"
     i=1
-    sucess=true
+    local success=true
     while [ -e "$caseIn" ]; do
 
         \time -o "timetmp" -f "\nTime Taken %e\nMemory %M" ./$b <$caseIn 1>$caseOut 2>&1
@@ -178,7 +184,7 @@ qtester() {
         becho "test case: ${i}"
         becho "****************************"
 
-        diff --color=always -Zsaq $caseAns $caseOut || sucess=false
+        diff --color=always -Zsaq =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false
         cat timetmp
         rm timetmp $caseOut
 
@@ -188,15 +194,16 @@ qtester() {
         caseOut=".out_${a}_${i}"
     done
 
-    if [ "$sucess" = true ]; then
+    if [ "$success" = true ]; then
         gecho "Sample test cases passed"
+        submit $b
     else
         recho "Sample test cases failed"
     fi
 }
 
 cleancch() {
-    rm ~/cc/*/.in* */.ans* */.out*
+    rm ~/cc/*/.in_* ~/cc/*/.ans_* 
     find ~/cc/ -type f ! -name "*.*" -delete
 }
 
@@ -225,7 +232,7 @@ solncompare() {
         ./$2 <solncompare_tc >solncompare_out1
         ./$3 <solncompare_tc >solncompare_out2
 
-        diff --color=always -Zas solncompare_out1 solncompare_out2 || break
+        diff --color=always -Zsa =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false
 
         let "i++"
 
@@ -240,11 +247,11 @@ submit() {
     fi
     subfile="/home/raghav/submit.cpp"
     echo -e "#include <bits/stdc++.h> \n" >$subfile
-    gcc -E "${a}.cpp" | grep -A 10000 "using namespace std;" | sed "/^#/d" >>$subfile && echo -e "Created $subfile"
+    gcc -C -E "${a}.cpp" | grep -A 10000 "using namespace std;" | sed "/^#/d" >>$subfile && gecho "Created $subfile"
 }
 
 precompile() {
     echo -e "#include <bits/stdc++.h> \n" >"precompiled.cpp"
-    gcc -E $1 | grep -A 10000 "using namespace std;" | sed "/^#/d" >>"precompiled.cpp"
+    gcc -C -E $1 | grep -A 10000 "using namespace std;" | sed "/^#/d" >>"precompiled.cpp"
     \cat precompiled.cpp
 }

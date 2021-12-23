@@ -37,7 +37,7 @@ lvim.plugins = {
 				css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
 			})
 		end,
-		ft = { "css", "html" },
+		-- ft = { "css", "html" },
 	},
 	{ "f3fora/cmp-spell", requires = "hrsh7th/nvim-cmp" },
 	{
