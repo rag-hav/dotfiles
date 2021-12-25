@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Needed for cron
+export DISPLAY=:0
+
+while inotifywait -e modify ${HOME}/.zshrc ${HOME}/.exports.sh ${HOME}/.funcs.sh ${HOME}/.aliases.sh; do
+        pkill -usr1 zsh
+done

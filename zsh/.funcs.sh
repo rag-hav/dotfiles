@@ -68,11 +68,11 @@ ftester() {
 
 
     make $b || return
-    i=1
+    local i=1
     local success=true
-    caseIn=".in_${a}_${i}"
-    caseAns=".ans_${a}_${i}"
-    caseOut=".out_${a}_${i}"
+    local caseIn=".${a}_in${i}"
+    local caseAns=".${a}_ans${i}"
+    local caseOut=".${a}_out${i}"
     [ -e "$caseIn" ] || recho "No test case for ${a}"
     while [ -e "$caseIn" ]; do
 
@@ -97,9 +97,9 @@ ftester() {
         rm timetmp $caseOut
 
         let "i++"
-        caseIn=".in_${a}_${i}"
-        caseAns=".ans_${a}_${i}"
-        caseOut=".out_${a}_${i}"
+        caseIn=".${a}_in${i}"
+        caseAns=".${a}_ans${i}"
+        caseOut=".${a}_out${i}"
     done
 
     if [ "$success" = true ]; then
@@ -125,11 +125,11 @@ tester() {
     fi
 
     make ${b} || return
-    i=1
+    local i=1
     local success=true
-    caseIn=".in_${a}_${i}"
-    caseAns=".ans_${a}_${i}"
-    caseOut=".out_${a}_${i}"
+    local caseIn=".${a}_in${i}"
+    local caseAns=".${a}_ans${i}"
+    local caseOut=".${a}_out${i}"
     [ -e "$caseIn" ] || recho "No test case for ${a}"
     while [ -e "$caseIn" ]; do
 
@@ -146,9 +146,9 @@ tester() {
         rm timetmp $caseOut
 
         let "i++"
-        caseIn=".in_${a}_${i}"
-        caseAns=".ans_${a}_${i}"
-        caseOut=".out_${a}_${i}"
+        caseIn=".${a}_in${i}"
+        caseAns=".${a}_ans${i}"
+        caseOut=".${a}_out${i}"
     done
 
     if [ "$success" = true ]; then
@@ -174,11 +174,11 @@ qtester() {
     fi
 
     make ${b} || return
-    caseIn=".in_${a}_${i}"
-    caseAns=".ans_${a}_${i}"
-    caseOut=".out_${a}_${i}"
+    local caseIn=".${a}_in${i}"
+    local caseAns=".${a}_ans${i}"
+    local caseOut=".${a}_out${i}"
     [ -e "$caseIn" ] || recho "No test case for ${a}"
-    i=1
+    local i=1
     local success=true
     while [ -e "$caseIn" ]; do
 
@@ -192,9 +192,9 @@ qtester() {
         rm timetmp $caseOut
 
         let "i++"
-        caseIn=".in_${a}_${i}"
-        caseAns=".ans_${a}_${i}"
-        caseOut=".out_${a}_${i}"
+        caseIn=".${a}_in${i}"
+        caseAns=".${a}_ans${i}"
+        caseOut=".${a}_out${i}"
     done
 
     if [ "$success" = true ]; then
@@ -206,7 +206,7 @@ qtester() {
 }
 
 cleancch() {
-    rm ~/cc/*/.in_* ~/cc/*/.ans_* 
+    rm ~/cc/*/.*_in* ~/cc/*/.*_ans* 
     find ~/cc/ -type f ! -name "*.*" -delete
 }
 
