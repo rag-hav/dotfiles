@@ -50,12 +50,6 @@ lvim.plugins = {
 	},
 	{
 		"andweeb/presence.nvim",
-		config = function()
-			require("presence"):setup({
-				blacklist = { "blackboard" },
-				button = false,
-			})
-		end,
 	},
 	{
 		"mattn/emmet-vim",

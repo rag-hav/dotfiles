@@ -30,12 +30,12 @@ songdl() {
     # ye command actually download karega
     if [[ $query =~ "https?://(www.)?youtu\.?be.*" ]]; then
         becho "Downloading song from url"
-        echo -e " youtube-dl -o \"/home/raghav/Music/youtube_dl/%(title)s.%(ext)s\" --extract-audio --embed-thumbnail --audio-format mp3  ${query} "
-        youtube-dl -o "/home/raghav/Music/youtube_dl/%(title)s.%(ext)s" --extract-audio --embed-thumbnail --audio-format mp3 ${query}
+        echo -e "yt-dlp -o \"/home/raghav/Music/youtube_dl/%(title)s.%(ext)s\" --extract-audio --embed-thumbnail --audio-format mp3  ${query} "
+        yt-dlp -o "/home/raghav/Music/youtube_dl/%(title)s.%(ext)s" --extract-audio --embed-thumbnail --audio-format mp3 ${query}
     else
         becho "Searching..."
-        echo -e "youtube-dl -o \"/home/raghav/Music/youtube_dl/%(title)s.%(ext)s\" --extract-audio --embed-thumbnail --audio-format mp3  \"ytsearch:${query}\" "
-        youtube-dl -o "/home/raghav/Music/youtube_dl/%(title)s.%(ext)s" --extract-audio --embed-thumbnail --audio-format mp3 "ytsearch:${query}"
+        echo -e "yt-dlp -o \"/home/raghav/Music/youtube_dl/%(title)s.%(ext)s\" --extract-audio --embed-thumbnail --audio-format mp3  \"ytsearch:${query}\" "
+        yt-dlp -o "/home/raghav/Music/youtube_dl/%(title)s.%(ext)s" --extract-audio --embed-thumbnail --audio-format mp3 "ytsearch:${query}"
     fi
 }
 
@@ -76,22 +76,23 @@ ftester() {
     [ -e "$caseIn" ] || recho "No test case for ${a}"
     while [ -e "$caseIn" ]; do
 
-        \time -o "timetmp" -f "\nTime Taken %e\nMemory %M" ./$b <$caseIn 1>$caseOut 2>&1
+        \time -o timetmp -f "Time Taken %e\n" ./$b <$caseIn >$caseOut 
 
         becho "\n\n****************************"
-        becho "test case: ${i}"
+        becho "Test Case: ${i}"
         becho "****************************"
-        yecho "\n\ninput: "
+        yecho "\nInput: "
         cat $caseIn
-        yecho "\n\noutput: "
+        yecho "\n\nOutput: "
         cat $caseOut
-        yecho "\n\nexpected: "
+        yecho "\n\nExpected: "
         cat $caseAns
-        yecho "\n\ndiff: "
+        yecho "\n\nDiff: "
         # remove all comments from input file. gcc -fpreprocessed -dD -E $b.cpp
         # check if there is "trace" in result. grep
         # if not, then output diff 
-        grep -q "trace" =(gcc -fpreprocessed -dD -E $b.cpp) && { recho "Skipped..." && success=false } || { diff --color=always -Zsa =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false }
+        grep -q "trace" =(gcc -fpreprocessed -dD -E $b.cpp) && { echo "Skipped..." && success=false } || { diff --color=always -Zsa =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false }
+        yecho "\n\nResult: "
         cat timetmp
         rm timetmp $caseOut
 
@@ -132,13 +133,15 @@ tester() {
     [ -e "$caseIn" ] || recho "No test case for ${a}"
     while [ -e "$caseIn" ]; do
 
-        \time -o "timetmp" -f "\nTime Taken %e\nMemory %M" ./$b <$caseIn 1>$caseOut 2>&1
+        \time -o "timetmp" -f "Time Taken %e\n" ./$b <$caseIn 1>$caseOut 
         becho "\n\n****************************"
-        becho "test case: ${i}"
+        becho "Test Case: ${i}"
         becho "****************************"
 
-        grep -q "trace" =(gcc -fpreprocessed -dD -E $b.cpp) && { recho "Skipped..." && success=false } || { diff --color=always -Zsa =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false }
-        grep -q "trace" $b.cpp && { recho "Skipped..." && success=false } || { diff --color=always -Zsa =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false }
+        yecho "\nDiff: "
+        grep -q "trace" =(gcc -fpreprocessed -dD -E $b.cpp) && { echo "Skipped..." && success=false } || { diff --color=always -Zsa =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false }
+
+        yecho "\n\nResult: "
         cat timetmp
         rm timetmp $caseOut
 
@@ -247,11 +250,11 @@ submit() {
     fi
     subfile="/home/raghav/submit.cpp"
     echo -e "#include <bits/stdc++.h> \n" >$subfile
-    gcc -C -E "${a}.cpp" | grep -A 10000 "using namespace std;" | sed "/^#/d" >>$subfile && gecho "Created $subfile"
+    gcc -E "${a}.cpp" | grep -A 10000 "using namespace std;" | sed "/^#/d" >>$subfile && gecho "Created $subfile"
 }
 
 precompile() {
     echo -e "#include <bits/stdc++.h> \n" >"precompiled.cpp"
-    gcc -C -E $1 | grep -A 10000 "using namespace std;" | sed "/^#/d" >>"precompiled.cpp"
+    gcc -E $1 | grep -A 10000 "using namespace std;" | sed "/^#/d" >>"precompiled.cpp"
     \cat precompiled.cpp
 }

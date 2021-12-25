@@ -1,7 +1,9 @@
 alias c='xclip -selection clipboard'
 alias cls=clear
-alias lg='lazygit'
+alias cp='cp -i'
 alias dl='xclip -o | xargs curl'
+alias lg='lazygit'
+alias mv='mv -i'
 alias q=exit
 alias v='xclip -o'
 alias vim="lvim"
