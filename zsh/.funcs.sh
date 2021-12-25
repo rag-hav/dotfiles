@@ -30,12 +30,12 @@ songdl() {
     # ye command actually download karega
     if [[ $query =~ "https?://(www.)?youtu\.?be.*" ]]; then
         becho "Downloading song from url"
-        echo -e "yt-dlp -o \"/home/raghav/Music/youtube_dl/%(title)s.%(ext)s\" --extract-audio --embed-thumbnail --audio-format mp3  ${query} "
-        yt-dlp -o "/home/raghav/Music/youtube_dl/%(title)s.%(ext)s" --extract-audio --embed-thumbnail --audio-format mp3 ${query}
+        echo -e "yt-dlp -o \"${HOME}/Music/youtube_dl/%(title)s.%(ext)s\" --extract-audio --embed-thumbnail --audio-format mp3  ${query} "
+        yt-dlp -o "${HOME}/Music/youtube_dl/%(title)s.%(ext)s" --extract-audio --embed-thumbnail --audio-format mp3 ${query}
     else
         becho "Searching..."
-        echo -e "yt-dlp -o \"/home/raghav/Music/youtube_dl/%(title)s.%(ext)s\" --extract-audio --embed-thumbnail --audio-format mp3  \"ytsearch:${query}\" "
-        yt-dlp -o "/home/raghav/Music/youtube_dl/%(title)s.%(ext)s" --extract-audio --embed-thumbnail --audio-format mp3 "ytsearch:${query}"
+        echo -e "yt-dlp -o \"${HOME}/Music/youtube_dl/%(title)s.%(ext)s\" --extract-audio --embed-thumbnail --audio-format mp3  \"ytsearch:${query}\" "
+        yt-dlp -o "${HOME}/Music/youtube_dl/%(title)s.%(ext)s" --extract-audio --embed-thumbnail --audio-format mp3 "ytsearch:${query}"
     fi
 }
 
@@ -248,7 +248,7 @@ submit() {
     else
         a=$1
     fi
-    subfile="/home/raghav/submit.cpp"
+    subfile="${HOME}/submit.cpp"
     echo -e "#include <bits/stdc++.h> \n" >$subfile
     gcc -E "${a}.cpp" | grep -A 10000 "using namespace std;" | sed "/^#/d" >>$subfile && gecho "Created $subfile"
 }
