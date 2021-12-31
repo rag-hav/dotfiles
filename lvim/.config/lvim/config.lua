@@ -19,6 +19,8 @@ lvim.builtin.cmp.completion = {
 	completeopt = "menu,menuone,noinsert,preview",
 }
 
+-- lvim.builtin.cmp.sources.insert({ name = "neorg" })
+
 require("lvim.lsp.null-ls.formatters").setup({
 	{ exe = "black" },
 	{ exe = "prettier" },
@@ -30,7 +32,6 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<CR>"] = ":noh<cr><cr>"
 lvim.keys.term_mode["jk"] = "<C-\\><C-n>"
 lvim.keys.term_mode["kj"] = "<C-\\><C-n>"
-lvim.keys.term_mode["<ESC>"] = "<C-\\><C-n>"
 
 lvim.lsp.diagnostics.virtual_text = false
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

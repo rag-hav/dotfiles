@@ -1,4 +1,29 @@
 lvim.plugins = {
+	-- {
+	-- 	"nvim-neorg/neorg",
+	-- 	config = function()
+	-- 		require("neorg").setup({
+	-- 			-- Tell Neorg what modules to load
+	-- 			load = {
+	-- 				["core.norg.completion"] = {
+	-- 					config = {
+	-- 						engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
+	-- 					},
+	-- 				},
+	-- 				["core.defaults"] = {}, -- Load all the default modules
+	-- 				["core.norg.concealer"] = {}, -- Allows for use of icons
+	-- 				["core.norg.dirman"] = { -- Manage your directories with Neorg
+	-- 					config = {
+	-- 						workspaces = {
+	-- 							my_workspace = "~/neorg",
+	-- 						},
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	requires = "nvim-lua/plenary.nvim",
+	-- },
 	{ "voldikss/vim-browser-search" },
 	{
 		"max397574/better-escape.nvim",

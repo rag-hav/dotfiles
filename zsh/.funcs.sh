@@ -76,7 +76,7 @@ ftester() {
     [ -e "$caseIn" ] || recho "No test case for ${a}"
     while [ -e "$caseIn" ]; do
 
-        \time -o timetmp -f "Time Taken %e\n" ./$b <$caseIn >$caseOut 
+        \time -o timetmp -f "Time Taken %e\n" ./$b <$caseIn >$caseOut 2>err
 
         becho "\n\n****************************"
         becho "Test Case: ${i}"
@@ -85,6 +85,10 @@ ftester() {
         cat $caseIn
         yecho "\n\nOutput: "
         cat $caseOut
+        if [ -s err ]; then
+            yecho "\n\nErrors: "
+            cat err
+        fi
         yecho "\n\nExpected: "
         cat $caseAns
         yecho "\n\nDiff: "
@@ -94,7 +98,7 @@ ftester() {
         grep -q "trace" =(gcc -fpreprocessed -dD -E $b.cpp) && { echo "Skipped..." && success=false } || { diff --color=always -Zsa =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false }
         yecho "\n\nResult: "
         cat timetmp
-        rm timetmp $caseOut
+        rm timetmp err
 
         let "i++"
         caseIn=".${a}_in${i}"
@@ -143,7 +147,7 @@ tester() {
 
         yecho "\n\nResult: "
         cat timetmp
-        rm timetmp $caseOut
+        rm timetmp 
 
         let "i++"
         caseIn=".${a}_in${i}"
@@ -189,7 +193,7 @@ qtester() {
 
         diff --color=always -Zsaq =(nl -ba -w3 -s"| " $caseAns) =(nl -ba -w3 -s"| " $caseOut ) || success=false
         cat timetmp
-        rm timetmp $caseOut
+        rm timetmp 
 
         let "i++"
         caseIn=".${a}_in${i}"
@@ -206,7 +210,7 @@ qtester() {
 }
 
 cleancch() {
-    rm ~/cc/*/.*_in* ~/cc/*/.*_ans* 
+    rm ~/cc/*/.*_in* ~/cc/*/.*_ans* ~/cc/*/.*_out* 
     find ~/cc/ -type f ! -name "*.*" -delete
 }
 

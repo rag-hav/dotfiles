@@ -140,9 +140,9 @@ def main():
                     shutil.copyfile(TEMPLATE, codefile)
 
                 for i, test in enumerate(data["tests"]):
-                    with open(f".{qid}_ans{i+1}", "w") as f:
-                        f.write(test["input"])
                     with open(f".{qid}_in{i+1}", "w") as f:
+                        f.write(test["input"])
+                    with open(f".{qid}_ans{i+1}", "w") as f:
                         f.write(test["output"])
 
                 with open(LOGFILE, "a") as log:
