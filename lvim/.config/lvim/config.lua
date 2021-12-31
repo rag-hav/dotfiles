@@ -8,6 +8,7 @@ vim.opt.cmdheight = 1
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.wrap = true
+vim.opt.autochdir = true
 vim.opt.relativenumber = true
 
 lvim.builtin.dashboard.active = true
