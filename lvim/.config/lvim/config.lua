@@ -37,7 +37,7 @@ lvim.keys.term_mode["kj"] = "<C-\\><C-n>"
 lvim.lsp.diagnostics.virtual_text = false
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
-	{ "CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics({ focusable=false})" },
+	{ "CursorHold", "*", "lua vim.diagnostic.open_float()" },
 }
 
 require("abzlualine").config()

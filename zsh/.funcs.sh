@@ -178,11 +178,11 @@ qtester() {
     fi
 
     make ${b} || return
+    local i=1
     local caseIn=".${a}_in${i}"
     local caseAns=".${a}_ans${i}"
     local caseOut=".${a}_out${i}"
     [ -e "$caseIn" ] || recho "No test case for ${a}"
-    local i=1
     local success=true
     while [ -e "$caseIn" ]; do
 

@@ -1,11 +1,24 @@
 local template_cmd =
 	"<CMD>w | lua require('toggleterm.terminal').Terminal:new({ cmd = '%s', direction = 'vertical', close_on_exit = false }):open(50)<CR>"
+local debug_cmd = "g++ -ggdb -o "
+	.. vim.fn.expand("%:r")
+	.. " "
+	.. vim.fn.expand("%")
+	.. ' && gdb -q -ex "set args < '
+	.. "."
+	.. vim.fn.expand("%:t:r")
+	.. "_in%d"
+	.. '" '
+	.. vim.fn.expand("%:t:r")
 
 require("which-key").register({
 	r = {
 		name = "Run",
 		r = {
-			string.format(template_cmd, "make " .. vim.fn.expand("%:r") .. " && ./" .. vim.fn.expand("%:t:r")),
+			string.format(
+				template_cmd,
+				"make " .. vim.fn.expand("%:r") .. " && echo Running && ./" .. vim.fn.expand("%:t:r")
+			),
 			"Run",
 		},
 		i = {
@@ -14,6 +27,38 @@ require("which-key").register({
 				"make " .. vim.fn.expand("%:r") .. " && ./" .. vim.fn.expand("%:t:r") .. " < in"
 			),
 			"Run with input",
+		},
+
+		g = {
+			name = "GBD",
+			g = {
+				string.format(
+					template_cmd,
+					"g++ -ggdb -o "
+						.. vim.fn.expand("%:r")
+						.. " "
+						.. vim.fn.expand("%")
+						.. " && gdb -q "
+						.. vim.fn.expand("%:t:r")
+				),
+				"GBD",
+			},
+			a = {
+				string.format(template_cmd, string.format(debug_cmd, 1)),
+				"Input file 1",
+			},
+			b = {
+				string.format(template_cmd, string.format(debug_cmd, 2)),
+				"Input file 2",
+			},
+			c = {
+				string.format(template_cmd, string.format(debug_cmd, 3)),
+				"Input file 3",
+			},
+			d = {
+				string.format(template_cmd, string.format(debug_cmd, 4)),
+				"Input file 4",
+			},
 		},
 
 		-- these are setup specific functions
