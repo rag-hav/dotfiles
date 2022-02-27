@@ -10,6 +10,7 @@ vim.opt.tabstop = 4
 vim.opt.wrap = true
 vim.opt.autochdir = true
 vim.opt.relativenumber = true
+vim.g.exec_width = 50
 
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
@@ -26,6 +27,7 @@ require("lvim.lsp.null-ls.formatters").setup({
 	{ exe = "black" },
 	{ exe = "prettier" },
 	{ exe = "stylua" },
+	{ exe = "sqlformat" },
 })
 
 -- keymaps
@@ -43,5 +45,6 @@ lvim.autocommands.custom_groups = {
 require("abzlualine").config()
 require("cached_format")
 require("plugin")
+require("funcs")
 require("plugins/dashboard")
 require("plugins/whichkey")
