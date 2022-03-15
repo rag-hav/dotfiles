@@ -254,8 +254,8 @@ submit() {
     fi
     subfile="${HOME}/submit.cpp"
     echo -e "#include <bits/stdc++.h> \n" >$subfile
-    gcc -E "${a}.cpp" | grep -A 10000 "using namespace std;" | sed "/^#/d" >>$subfile && gecho "Created $subfile"
-}
+    gcc -D SUBMIT -E "${a}.cpp" | grep -A 10000 "using namespace std;" | sed "/^#/d" >>$subfile && gecho "Created $subfile"
+ }
 
 precompile() {
     echo -e "#include <bits/stdc++.h> \n" >"precompiled.cpp"

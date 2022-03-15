@@ -24,6 +24,7 @@ lvim.plugins = {
 	-- 	end,
 	-- 	requires = "nvim-lua/plenary.nvim",
 	-- },
+	{ "junegunn/goyo.vim", ft = { "text" } },
 	{ "voldikss/vim-browser-search" },
 	{
 		"max397574/better-escape.nvim",
@@ -73,9 +74,9 @@ lvim.plugins = {
 			vim.g.mkdp_auto_close = 0
 		end,
 	},
-	{
-		"andweeb/presence.nvim",
-	},
+	-- {
+	-- 	"andweeb/presence.nvim",
+	-- },
 	{
 		"mattn/emmet-vim",
 		ft = "html",
