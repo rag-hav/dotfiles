@@ -21,13 +21,19 @@ lvim.builtin.cmp.completion = {
 	completeopt = "menu,menuone,noinsert,preview",
 }
 
+lvim.builtin.project.detection_methods = { "=src", ".git", "Makefile" }
+
 -- lvim.builtin.cmp.sources.insert({ name = "neorg" })
 
 require("lvim.lsp.null-ls.formatters").setup({
-	{ exe = "black" },
-	{ exe = "prettier" },
-	{ exe = "stylua" },
-	{ exe = "sqlformat" },
+	{ command = "black" },
+	{ command = "prettier" },
+	{ command = "stylua" },
+	{ command = "sqlformat" },
+	{ command = "shellharden" },
+})
+require("lvim.lsp.null-ls.linters").setup({
+	{ command = "shellcheck" },
 })
 
 -- keymaps
@@ -39,11 +45,11 @@ lvim.keys.term_mode["kj"] = "<C-\\><C-n>"
 lvim.lsp.diagnostics.virtual_text = false
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
-	{ "CursorHold", "*", "lua vim.diagnostic.open_float()" },
+	{ "CursorHold", "*", "lua vim.diagnostic.open_float({focusable=true} )" },
 }
 
 require("abzlualine").config()
-require("cached_format")
+-- require("cached_format")
 require("plugin")
 require("funcs")
 require("plugins/dashboard")

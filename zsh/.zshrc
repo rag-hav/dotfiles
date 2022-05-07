@@ -7,7 +7,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 #
-export PATH=$HOME/.dart-sdk/bin:$HOME/.flutter/bin:/.cargo/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/.dart-sdk/bin:$HOME/.flutter/bin:/.cargo/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/raghav/.oh-my-zsh"
@@ -113,6 +113,7 @@ trap "source ~/.zshrc && rehash" USR1
 source ~/.aliases.sh
 source ~/.exports.sh
 source ~/.funcs.sh
+source /etc/proxyrc
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

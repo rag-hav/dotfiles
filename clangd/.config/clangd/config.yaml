@@ -1,2 +1,2 @@
-CompileFlags:                     # Tweak the parse settings
-  Add: [--std=c++17, -include=/home/raghav/projects/bitcoin]
+CompileFlags: # Tweak the parse settings
+  # Add: [--std=c++17]

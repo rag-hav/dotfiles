@@ -7,3 +7,4 @@ alias mv='mv -i'
 alias q=exit
 alias v='xclip -o'
 alias vim="lvim"
+alias svim="sudo $HOME/.local/bin/lvim"
