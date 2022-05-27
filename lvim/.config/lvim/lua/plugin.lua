@@ -24,6 +24,7 @@ lvim.plugins = {
 	-- 	end,
 	-- 	requires = "nvim-lua/plenary.nvim",
 	-- },
+	{ "wellle/targets.vim" },
 	{ "junegunn/goyo.vim", ft = { "text" } },
 	{ "voldikss/vim-browser-search" },
 	{

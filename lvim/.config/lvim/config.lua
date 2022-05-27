@@ -12,11 +12,10 @@ vim.opt.autochdir = true
 vim.opt.relativenumber = true
 vim.g.exec_width = 50
 
-lvim.builtin.dashboard.active = true
+lvim.builtin.alpha.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.notify.active = true
 lvim.builtin.global_status_line = { active = true }
-lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.cmp.completion = {
 	completeopt = "menu,menuone,noinsert,preview",
 }

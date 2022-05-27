@@ -5,7 +5,7 @@ lvim.builtin.which_key.mappings["h"] = { "<cmd>Telescope help_tags<CR>", "help" 
 lvim.builtin.which_key.mappings["f"] = { "<cmd>Telescope live_grep <CR>", "Find in files" }
 lvim.builtin.which_key.mappings["F"] = { "<cmd>Telescope find_files <CR>", "Find files" }
 lvim.builtin.which_key.mappings["t"] = { "<cmd>ToggleTerm direction=vertical size=50<CR>", "Terminal" }
-lvim.builtin.which_key.vmappings["s"] = { "<Plug>SearchVisual<CR>", "Terminal" }
+lvim.builtin.which_key.vmappings["s"] = { "<Plug>SearchVisual<CR>", "Search on google" }
 -- lvim.builtin.which_key.mappings["e"] = {"<cmd>Telescope buffers<CR>", "Buffers"}
 -- lvim.builtin.which_key.
 

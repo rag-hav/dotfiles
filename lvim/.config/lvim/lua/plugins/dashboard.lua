@@ -1,6 +1,4 @@
-lvim.builtin.dashboard.active = true
-
-lvim.builtin.dashboard.custom_header = {
+lvim.builtin.alpha.dashboard.section.header.val = {
 	" ██▀███   ▄▄▄        ▄████  ██░ ██  ▄▄▄    ██▒   █▓",
 	"▓██ ▒ ██▒▒████▄     ██▒ ▀█▒▓██░ ██▒▒████▄ ▓██░   █▒",
 	"▓██ ░▄█ ▒▒██  ▀█▄  ▒██░▄▄▄░▒██▀▀██░▒██  ▀█▄▓██  █▒░",
@@ -11,4 +9,8 @@ lvim.builtin.dashboard.custom_header = {
 	"░░   ░   ░   ▒   ░ ░   ░  ░  ░░ ░  ░   ▒     ░░    ",
 	"░           ░  ░      ░  ░  ░  ░      ░  ░   ░     ",
 	"░                                                  ",
+}
+lvim.builtin.alpha.dashboard.section.footer.val = {
+	"",
+	"A code a day, keeps nallapan away!",
 }
