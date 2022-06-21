@@ -3,3 +3,11 @@
 	email = raghav.ag13@gmail.com
 [http]
 	; proxy = http://IIT2020047:ABC_123_abc@172.31.2.3:8080
+[safe]
+	directory = /main/projects/ContestCountdown
+	directory = /main/projects/gnome-shell-spotify-label
+	directory = /main/projects/bitcoin
+	directory = /main/projects/libgweather
+	directory = /main/projects/stickybuf.nvim
+[github]
+	user = rag-hav

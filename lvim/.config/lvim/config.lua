@@ -23,6 +23,8 @@ lvim.builtin.cmp.completion = {
 lvim.builtin.project.detection_methods = { "=src", ".git", "Makefile" }
 
 -- lvim.builtin.cmp.sources.insert({ name = "neorg" })
+lvim.builtin.cmp.formatting.source_names["copilot"] = "(Copilot)"
+table.insert(lvim.builtin.cmp.sources, 1, { name = "copilot" })
 
 require("lvim.lsp.null-ls.formatters").setup({
 	{ command = "black" },
@@ -33,19 +35,23 @@ require("lvim.lsp.null-ls.formatters").setup({
 })
 require("lvim.lsp.null-ls.linters").setup({
 	{ command = "shellcheck" },
+	-- { command = "proselint" },
 })
 
 -- keymaps
 lvim.leader = "space"
 lvim.keys.normal_mode["<CR>"] = ":noh<cr><cr>"
+lvim.keys.visual_mode["*"] = '"sy/<C-R>s<CR>'
+lvim.keys.visual_mode["#"] = '"sy?<C-R>s<CR>'
 lvim.keys.term_mode["jk"] = "<C-\\><C-n>"
 lvim.keys.term_mode["kj"] = "<C-\\><C-n>"
 
 lvim.lsp.diagnostics.virtual_text = false
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
-lvim.autocommands.custom_groups = {
-	{ "CursorHold", "*", "lua vim.diagnostic.open_float({focusable=true} )" },
-}
+vim.api.nvim_create_autocmd("CursorHold", {
+	pattern = "*",
+	command = "lua vim.diagnostic.open_float({focusable=true})",
+})
 
 require("abzlualine").config()
 -- require("cached_format")
@@ -53,3 +59,4 @@ require("plugin")
 require("funcs")
 require("plugins/dashboard")
 require("plugins/whichkey")
+-- require("plugins/outline")

@@ -1,29 +1,37 @@
+-- config = string or function, -- Specifies code to run after this plugin is loaded.
+-- The setup key implies opt = true
+-- setup = string or function,  -- Specifies code to run before this plugin is loaded.
+
 lvim.plugins = {
-	-- {
-	-- 	"nvim-neorg/neorg",
-	-- 	config = function()
-	-- 		require("neorg").setup({
-	-- 			-- Tell Neorg what modules to load
-	-- 			load = {
-	-- 				["core.norg.completion"] = {
-	-- 					config = {
-	-- 						engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
-	-- 					},
-	-- 				},
-	-- 				["core.defaults"] = {}, -- Load all the default modules
-	-- 				["core.norg.concealer"] = {}, -- Allows for use of icons
-	-- 				["core.norg.dirman"] = { -- Manage your directories with Neorg
-	-- 					config = {
-	-- 						workspaces = {
-	-- 							my_workspace = "~/neorg",
-	-- 						},
-	-- 					},
-	-- 				},
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- 	requires = "nvim-lua/plenary.nvim",
-	-- },
+	{ "tpope/vim-fugitive" },
+	{
+		"/stevearc/stickybuf.nvim",
+		config = function()
+			require("plugins/stickybuf")
+		end,
+	},
+	{
+		"stevearc/aerial.nvim",
+		config = function()
+			require("aerial").setup()
+		end,
+	},
+	{ "felipec/vim-sanegx" },
+	{
+		"SmiteshP/nvim-gps",
+		requires = "nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("nvim-gps").setup()
+		end,
+	},
+
+	{
+		"mattn/vim-gist",
+		requires = "mattn/webapi-vim",
+		setup = function()
+			vim.g.gist_open_browser_after_post = 1
+		end,
+	},
 	{ "wellle/targets.vim" },
 	{ "junegunn/goyo.vim", ft = { "text" } },
 	{ "voldikss/vim-browser-search" },
@@ -67,13 +75,16 @@ lvim.plugins = {
 		-- ft = { "css", "html" },
 	},
 	{ "f3fora/cmp-spell", requires = "hrsh7th/nvim-cmp" },
+
 	{
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",
-		ft = "markdown",
-		config = function()
-			vim.g.mkdp_auto_close = 0
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+			vim.g.mkdp_browser = { "/bin/google-chrome" }
+			vim.g.mkdp_echo_preview_url = 1
 		end,
+		ft = { "markdown" },
 	},
 	-- {
 	-- 	"andweeb/presence.nvim",
@@ -98,13 +109,6 @@ lvim.plugins = {
 		event = "BufRead",
 		config = function()
 			require("todo-comments").setup()
-		end,
-	},
-	{
-		"ray-x/lsp_signature.nvim",
-		event = "BufRead",
-		config = function()
-			require("lsp_signature").setup()
 		end,
 	},
 	{ "stevearc/dressing.nvim" },

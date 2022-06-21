@@ -108,10 +108,9 @@ ftester() {
         yecho "\n\nExpected: "
         cat "$caseAns"
         yecho "\n\nDiff: "
-        # remove all comments from input file. gcc -fpreprocessed -dD -E $b.cpp
-        # check if there is "trace" in result. grep
-        # if not, then output diff 
-        grep -q "trace" =(gcc -fpreprocessed -dD -E "$b".cpp) && { echo "Skipped..." && success=false } || { diff --color=always -Zsa =(nl -ba -w3 -s"| " "$caseAns") =(nl -ba -w3 -s"| " "$caseOut" ) || success=false }
+        # remove all trace output and compare output with expected 
+        # diff --color=always -Zsa  =(grep -vE  "^([1;[0-9]+m?)[0-9]+> " "$caseOut" | nl -ba -w3 -s"| " )  =(nl -ba -w3 -s"| " "$caseAns") || success=false 
+        diff --color=always -W 50 --left-column -yZsa  =(grep -vE  "^([1;[0-9]+m?)[0-9]+> " "$caseOut")  "$caseAns" || success=false 
         yecho "\n\nResult: "
         cat timetmp
         rm timetmp err
@@ -159,7 +158,7 @@ tester() {
         becho "****************************"
 
         yecho "\nDiff: "
-        grep -q "trace" =(gcc -fpreprocessed -dD -E "$b".cpp) && { echo "Skipped..." && success=false } || { diff --color=always -Zsa =(nl -ba -w3 -s"| " "$caseAns") =(nl -ba -w3 -s"| " "$caseOut" ) || success=false }
+        diff --color=always -Zsa  =(grep -vE  "^([1;[0-9]+m?)[0-9]+> " "$caseOut" | nl -ba -w3 -s"| " )  =(nl -ba -w3 -s"| " "$caseAns") || success=false 
 
         yecho "\n\nResult: "
         cat timetmp
@@ -207,7 +206,7 @@ qtester() {
         becho "test case: $i"
         becho "****************************"
 
-        diff --color=always -Zsaq =(nl -ba -w3 -s"| " "$caseAns") =(nl -ba -w3 -s"| " "$caseOut" ) || success=false
+        diff --color=always -Zsaq  =(grep -vE  "^([1;[0-9]+m?)[0-9]+> " "$caseOut" | nl -ba -w3 -s"| " )  =(nl -ba -w3 -s"| " "$caseAns") || success=false 
         cat timetmp
         rm timetmp 
 
