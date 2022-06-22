@@ -53,10 +53,8 @@ vim.api.nvim_create_autocmd("CursorHold", {
 	command = "lua vim.diagnostic.open_float({focusable=true})",
 })
 
-require("abzlualine").config()
--- require("cached_format")
 require("plugin")
 require("funcs")
+require("plugins/lualine")
 require("plugins/dashboard")
 require("plugins/whichkey")
--- require("plugins/outline")
