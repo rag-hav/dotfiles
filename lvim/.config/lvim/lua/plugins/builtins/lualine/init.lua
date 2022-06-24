@@ -1,7 +1,7 @@
 local kind = require("plugins.builtins.lualine.lsp_kind")
 local diag_source = "nvim_lsp"
 local ok, _ = pcall(require, "vim.diagnostic")
-local gps = require("nvim-gps")
+local isgps, gps = pcall(require, "nvim-gps")
 if ok then
 	diag_source = "nvim_diagnostic"
 end
@@ -146,7 +146,7 @@ local config = {
 		lualine_c = {
 			{
 				gps.get_location,
-				cond = gps.is_available,
+				cond = isgps and gps.is_available,
 			},
 		},
 
