@@ -13,7 +13,12 @@ lvim.plugins = {
 	{ "felipec/vim-sanegx" },
 	{ "folke/tokyonight.nvim" },
 	{ "tpope/vim-repeat" },
-
+	{
+		"jbyuki/instant.nvim",
+		setup = function()
+			vim.g.instant_username = "raghav"
+		end,
+	},
 	{
 		"navarasu/onedark.nvim",
 		config = function()

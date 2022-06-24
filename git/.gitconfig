@@ -9,5 +9,6 @@
 	directory = /main/projects/bitcoin
 	directory = /main/projects/libgweather
 	directory = /main/projects/stickybuf.nvim
+	directory = /main/projects/instant.nvim.wiki
 [github]
 	user = rag-hav
