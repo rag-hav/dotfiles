@@ -10,5 +10,6 @@
 	directory = /main/projects/libgweather
 	directory = /main/projects/stickybuf.nvim
 	directory = /main/projects/instant.nvim.wiki
+	directory = /main/projects/instant.nvim
 [github]
 	user = rag-hav
