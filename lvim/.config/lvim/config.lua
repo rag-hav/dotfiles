@@ -20,7 +20,10 @@ lvim.builtin.cmp.completion = {
 	completeopt = "menu,menuone,noinsert,preview",
 }
 
-lvim.builtin.project.detection_methods = { "=src", ".git", "Makefile" }
+lvim.builtin.nvimtree.setup.diagnostics.icons.hint = ""
+lvim.builtin.nvimtree.setup.diagnostics.icons.info = ""
+
+vim.lsp.handlers["textDocument/references"] = require("telescope.builtin").lsp_references
 
 lvim.lsp.diagnostics.virtual_text = false
 

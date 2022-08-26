@@ -11,5 +11,6 @@
 	directory = /main/projects/stickybuf.nvim
 	directory = /main/projects/instant.nvim.wiki
 	directory = /main/projects/instant.nvim
+	directory = /main/projects/gnome-shell-extension-mpris-indicator-button
 [github]
 	user = rag-hav

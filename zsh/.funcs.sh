@@ -109,8 +109,8 @@ ftester() {
         cat "$caseAns"
         yecho "\n\nDiff: "
         # remove all trace output and compare output with expected 
-        # diff --color=always -Zsa  =(grep -vE  "^([1;[0-9]+m?)[0-9]+> " "$caseOut" | nl -ba -w3 -s"| " )  =(nl -ba -w3 -s"| " "$caseAns") || success=false 
-        diff --color=always -W 50 --left-column -yZsa  =(grep -vE  "^([1;[0-9]+m?)[0-9]+> " "$caseOut")  "$caseAns" || success=false 
+        diff --color=always -Zsa  =(grep -vE  "^([1;[0-9]+m?)[0-9]+> " "$caseOut" | nl -ba -w3 -s"| " )  =(nl -ba -w3 -s"| " "$caseAns") || success=false
+        # diff --color=always -W 50 --left-column -yZsa  =(grep -vE  "^([1;[0-9]+m?)[0-9]+> " "$caseOut")  "$caseAns" || success=false 
         yecho "\n\nResult: "
         cat timetmp
         rm timetmp err

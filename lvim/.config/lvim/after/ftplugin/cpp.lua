@@ -14,17 +14,11 @@ require("which-key").register({
 	r = {
 		name = "Run",
 		r = {
-			string.format(
-				template_cmd,
-				"make " .. vim.fn.expand("%:r") .. " && echo Running && ./" .. vim.fn.expand("%:t:r")
-			),
+			string.format(template_cmd, "make %:r && echo Running && %:p:r"),
 			"Run",
 		},
 		i = {
-			string.format(
-				template_cmd,
-				"make " .. vim.fn.expand("%:r") .. " && ./" .. vim.fn.expand("%:t:r") .. " < in"
-			),
+			string.format(template_cmd, "make %:r && echo Running && %:p:r < in"),
 			"Run with input",
 		},
 

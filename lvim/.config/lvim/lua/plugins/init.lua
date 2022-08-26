@@ -5,6 +5,7 @@ lvim.plugins = {
 	require("plugins._markdown-preview"),
 	require("plugins._instant"),
 
+	{ "p00f/nvim-ts-rainbow" },
 	{ "tpope/vim-fugitive" },
 	{ "wellle/targets.vim" },
 	{ "junegunn/goyo.vim", ft = { "text" } },
@@ -41,17 +42,6 @@ lvim.plugins = {
 		requires = "mattn/webapi-vim",
 		setup = function()
 			vim.g.gist_open_browser_after_post = 1
-		end,
-	},
-	{
-		"max397574/better-escape.nvim",
-		config = function()
-			require("better_escape").setup({
-				mapping = { "jk", "kj" },
-				timeout = 100,
-				clear_empty_lines = true,
-				keys = "<Esc>",
-			})
 		end,
 	},
 	{

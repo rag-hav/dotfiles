@@ -105,7 +105,7 @@ local config = {
 		icons_enabled = true,
 		component_separators = nil,
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "dashboard", "NvimTree", "Outline", "alpha", "toggleterm" },
+		disabled_filetypes = { "dashboard", "NvimTree", "Outline", "alpha", "toggleterm", "aerial" },
 	},
 	sections = {
 		lualine_a = {
@@ -255,8 +255,13 @@ local config = {
 		lualine_c = {
 			{
 				"filename",
+				file_status = true,
 				cond = conditions.buffer_not_empty,
-				color = { fg = colors.blue, gui = "bold" },
+				symbols = {
+					modified = "  ", -- Text to show when the file is modified.
+					readonly = "  ", -- Text to show when the file is non-modifiable or readonly.
+					unnamed = "[No Name]", -- Text to show for unnamed buffers.
+				},
 			},
 		},
 		lualine_x = {},
