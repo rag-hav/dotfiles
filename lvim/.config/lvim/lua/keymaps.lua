@@ -1,5 +1,9 @@
+lvim.keys.insert_mode["jk"] = "<C-[>"
+lvim.keys.insert_mode["kj"] = "<C-[>"
 lvim.keys.normal_mode["<CR>"] = ":noh<cr><cr>"
+lvim.keys.normal_mode["L"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["H"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.visual_mode["*"] = '"sy/<C-R>s<CR>'
 lvim.keys.visual_mode["#"] = '"sy?<C-R>s<CR>'
-lvim.keys.term_mode["jk"] = "<C-\\><C-n>"
-lvim.keys.term_mode["kj"] = "<C-\\><C-n>"
+-- lvim.keys.term_mode["jk"] = "<C-\\><C-n>"
+-- lvim.keys.term_mode["kj"] = "<C-\\><C-n>"

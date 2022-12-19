@@ -4,7 +4,20 @@ lvim.plugins = {
 	require("plugins._colorizer"),
 	require("plugins._markdown-preview"),
 	require("plugins._instant"),
+	{
+		"jayp0521/mason-nvim-dap.nvim",
+		requires = { { "williamboman/mason.nvim" }, { "mfussenegger/nvim-dap" } },
+		config = function()
+			print("hi")
+            require('mason').setup()
+			require("mason-nvim-dap").setup({
+				automatic_setup = true,
+			})
 
+			require("mason-nvim-dap").setup_handlers()
+		end,
+	},
+	{ "romainchapou/confiture.nvim" },
 	{ "p00f/nvim-ts-rainbow" },
 	{ "tpope/vim-fugitive" },
 	{ "wellle/targets.vim" },
@@ -13,7 +26,6 @@ lvim.plugins = {
 	{ "stevearc/dressing.nvim" },
 	{ "f3fora/cmp-spell", requires = "hrsh7th/nvim-cmp" },
 	{ "felipec/vim-sanegx" },
-	{ "folke/tokyonight.nvim" },
 	{ "tpope/vim-repeat" },
 	{
 		"navarasu/onedark.nvim",
@@ -36,7 +48,6 @@ lvim.plugins = {
 			require("nvim-gps").setup()
 		end,
 	},
-
 	{
 		"mattn/vim-gist",
 		requires = "mattn/webapi-vim",
@@ -52,7 +63,6 @@ lvim.plugins = {
 		"tpope/vim-surround",
 		keys = { "c", "d", "y" },
 	},
-
 	{
 		"mattn/emmet-vim",
 		ft = "html",

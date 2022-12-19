@@ -274,6 +274,6 @@ submit() {
 
 precompile() {
     echo -e "#include <bits/stdc++.h> \n" >"precompiled.cpp"
-    gcc -D SUBMIT -E "$1" | grep -A 10000 "using namespace std;" | sed "/^#/d" >>"precompiled.cpp"
+    gcc -E "$1" | grep -A 10000 "using namespace std;" | sed "/^#/d" >>"precompiled.cpp"
     \cat precompiled.cpp
 }
