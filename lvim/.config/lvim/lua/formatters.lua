@@ -1,6 +1,6 @@
 require("lvim.lsp.null-ls.formatters").setup({
-	{ command = "black" },
-	-- { command = "prettier" },
+	{ command = "autopep8" },
+	{ command = "prettier" },
 	{ command = "stylua" },
 	{ command = "sqlformat" },
 	{ command = "shellharden" },

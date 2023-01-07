@@ -5,7 +5,7 @@ require("which-key").register({
         r = {
             string.format(
                 template_cmd,
-                "sh ".. vim.fn.expand("%:p")
+                "sh %:p"
             ),
             "Run",
         }

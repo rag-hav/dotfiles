@@ -3,13 +3,13 @@ lvim.plugins = {
 	require("plugins._lsp_signature"),
 	require("plugins._colorizer"),
 	require("plugins._markdown-preview"),
+	require("plugins._table_mode"),
 	require("plugins._instant"),
 	{
 		"jayp0521/mason-nvim-dap.nvim",
 		requires = { { "williamboman/mason.nvim" }, { "mfussenegger/nvim-dap" } },
 		config = function()
-			print("hi")
-            require('mason').setup()
+			require("mason").setup()
 			require("mason-nvim-dap").setup({
 				automatic_setup = true,
 			})
@@ -17,11 +17,13 @@ lvim.plugins = {
 			require("mason-nvim-dap").setup_handlers()
 		end,
 	},
-	{ "romainchapou/confiture.nvim" },
-	{ "p00f/nvim-ts-rainbow" },
+	{ "mfussenegger/nvim-jdtls" },
+	{ "mbbill/undotree", cmd = "UndotreeToggle" },
+	{ "shortcuts/no-neck-pain.nvim", cmd = "NoNeckPain" },
+	{ "romainchapou/confiture.nvim", cmd = "Confiture" },
 	{ "tpope/vim-fugitive" },
 	{ "wellle/targets.vim" },
-	{ "junegunn/goyo.vim", ft = { "text" } },
+	{ "junegunn/goyo.vim", ft = { "text" }, cmd = "Goyo" },
 	{ "voldikss/vim-browser-search" },
 	{ "stevearc/dressing.nvim" },
 	{ "f3fora/cmp-spell", requires = "hrsh7th/nvim-cmp" },

@@ -1,6 +1,6 @@
 lvim.log.level = "warn"
 lvim.leader = "space"
- 
+
 -- lvim.format_on_save = true
 lvim.colorscheme = "onedark"
 lvim.builtin.lualine.theme = "onedark"
@@ -24,6 +24,8 @@ lvim.builtin.nvimtree.setup.diagnostics.icons.hint = ""
 lvim.builtin.nvimtree.setup.diagnostics.icons.info = ""
 
 vim.lsp.handlers["textDocument/references"] = require("telescope.builtin").lsp_references
+
+table.insert(lvim.lsp.automatic_configuration.skipped_servers , "jdtls")
 
 -- lvim.lsp.diagnostics.virtual_text = false
 
