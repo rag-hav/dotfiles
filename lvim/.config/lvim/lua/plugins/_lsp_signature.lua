@@ -1,6 +1,6 @@
 return {
 	"ray-x/lsp_signature.nvim",
-	as = "lsp_signatue",
+	name = "lsp_signatue",
 	config = function()
 		require("lsp_signature").setup({
 			bind = true, -- This is mandatory, otherwise border config won't get registered.

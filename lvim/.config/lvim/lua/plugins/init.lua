@@ -4,10 +4,12 @@ lvim.plugins = {
 	require("plugins._colorizer"),
 	require("plugins._markdown-preview"),
 	require("plugins._table_mode"),
-	require("plugins._instant"),
+	-- require("plugins._instant"),
+	require("plugins._mind"),
+	-- require("plugins._orgmode"),
 	{
 		"jayp0521/mason-nvim-dap.nvim",
-		requires = { { "williamboman/mason.nvim" }, { "mfussenegger/nvim-dap" } },
+		dependencies = { { "williamboman/mason.nvim" }, { "mfussenegger/nvim-dap" } },
 		config = function()
 			require("mason").setup()
 			require("mason-nvim-dap").setup({
@@ -26,7 +28,7 @@ lvim.plugins = {
 	{ "junegunn/goyo.vim", ft = { "text" }, cmd = "Goyo" },
 	{ "voldikss/vim-browser-search" },
 	{ "stevearc/dressing.nvim" },
-	{ "f3fora/cmp-spell", requires = "hrsh7th/nvim-cmp" },
+	{ "f3fora/cmp-spell", dependencies = "hrsh7th/nvim-cmp" },
 	{ "felipec/vim-sanegx" },
 	{ "tpope/vim-repeat" },
 	{
@@ -45,21 +47,21 @@ lvim.plugins = {
 	},
 	{
 		"SmiteshP/nvim-gps",
-		requires = "nvim-treesitter/nvim-treesitter",
+		dependencies = "nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("nvim-gps").setup()
 		end,
 	},
 	{
 		"mattn/vim-gist",
-		requires = "mattn/webapi-vim",
-		setup = function()
+		dependencies = "mattn/webapi-vim",
+		init = function()
 			vim.g.gist_open_browser_after_post = 1
 		end,
 	},
 	{
 		"rose-pine/neovim",
-		as = "rose-pine",
+		name = "rose-pine",
 	},
 	{
 		"tpope/vim-surround",
@@ -68,7 +70,7 @@ lvim.plugins = {
 	{
 		"mattn/emmet-vim",
 		ft = "html",
-		setup = function()
+		init = function()
 			vim.g.user_emmet_leader_key = ","
 		end,
 	},

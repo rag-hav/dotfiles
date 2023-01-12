@@ -20,6 +20,9 @@ lvim.builtin.cmp.completion = {
 	completeopt = "menu,menuone,noinsert,preview",
 }
 
+-- org mode
+table.insert(lvim.builtin.cmp.sources, {name = "org"})
+
 lvim.builtin.nvimtree.setup.diagnostics.icons.hint = ""
 lvim.builtin.nvimtree.setup.diagnostics.icons.info = ""
 
