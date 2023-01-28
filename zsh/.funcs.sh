@@ -278,3 +278,50 @@ precompile() {
         gcc -E "$1" | grep -A 10000 "using namespace std;" | sed "/^#/d" 
     } >precompile.cpp 
 }
+
+journal() {
+    src_dir=$HOME/notes/.journal.encrypted
+    mnt_dir=$HOME/notes/journal
+    bkp_dir=$HOME/notes/journal.backup
+
+    if [ ! -d $src_dir ]; then 
+        recho "Encrypted folder $src_dir does not exist"
+        return 1
+    fi
+
+
+    case $1 in 
+
+        "open")
+            if [ -f $mnt_dir/.mount ]; then
+                gecho "Journal already oepn"
+            else
+                if [ -d $mnt_dir ]; then 
+                    find $mnt_dir -empty -type d -delete
+                fi
+                mkdir -p $mnt_dir
+
+                if [ ! -z "$(ls -A $mnt_dir)" ]; then
+                    mkdir -p $bkp_dir
+                    if [ ! -z "$(ls -A $mnt_dir)" ]; then
+                        recho "Mount dir: $mnt_dir is not empty, but backup dir: $bkp_dir is also not empty"
+                        return 1
+                    fi
+                    mv $mnt_dir/* $bkp_dir
+                fi
+                gocryptfs -i "10m" $src_dir $mnt_dir
+            fi
+            ;;
+
+        "close")
+            if [ ! -d $mnt_dir ]; then 
+                recho "Mount directory: $mnt_dir does not exist"
+            fi
+            fusermount -u $mnt_dir
+            ;;
+
+        *)
+            echo "Invalid command\n Use 'journal open' to decrypt the journal\n 'journal close' to encrypt it\n 'journal flush' to flush it"
+            ;;
+    esac
+}

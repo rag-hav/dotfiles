@@ -4,6 +4,7 @@ lvim.leader = "space"
 -- lvim.format_on_save = true
 lvim.colorscheme = "onedark"
 lvim.builtin.lualine.theme = "onedark"
+vim.g.tokyonight_transparent = true
 vim.opt.timeoutlen = 1000
 vim.opt.cmdheight = 1
 vim.opt.shiftwidth = 4
@@ -23,10 +24,13 @@ lvim.builtin.cmp.completion = {
 -- org mode
 table.insert(lvim.builtin.cmp.sources, {name = "org"})
 
+lvim.builtin.treesitter.highlight.additional_vim_regex_highlighting = {"markdown"}
+
 lvim.builtin.nvimtree.setup.diagnostics.icons.hint = ""
 lvim.builtin.nvimtree.setup.diagnostics.icons.info = ""
 
 vim.lsp.handlers["textDocument/references"] = require("telescope.builtin").lsp_references
+vim.lsp.handlers["textDocument/declaration"] = require("telescope.builtin").lsp_implementations
 
 table.insert(lvim.lsp.automatic_configuration.skipped_servers , "jdtls")
 

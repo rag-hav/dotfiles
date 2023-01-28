@@ -8,7 +8,8 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 #
-export PATH=$HOME/.cargo/bin:$HOME/.dart-sdk/bin:$HOME/.flutter/bin:/.cargo/bin:$PATH
+##
+export PATH=$HOME/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.dart-sdk/bin:$HOME/.flutter/bin:/.cargo/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/raghav/.oh-my-zsh"
@@ -142,3 +143,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+if [ -e /home/raghav/.nix-profile/etc/profile.d/nix.sh ]; then . /home/raghav/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

@@ -2,11 +2,63 @@ lvim.plugins = {
 	require("plugins._stickybuf"),
 	require("plugins._lsp_signature"),
 	require("plugins._colorizer"),
-	require("plugins._markdown-preview"),
+	-- require("plugins._markdown-preview"),
 	require("plugins._table_mode"),
 	-- require("plugins._instant"),
-	require("plugins._mind"),
-	-- require("plugins._orgmode"),
+	require("plugins._confiture"),
+	-- require("plugins._mind"),
+	require("plugins._orgmode"),
+	-- require("plugins._notetaking"),
+	require("plugins._obsidian"),
+	require("plugins._clipboard-image"),
+	{
+		"NMAC427/guess-indent.nvim",
+		config = function()
+			require("guess-indent").setup({})
+		end,
+	},
+	{
+		"andrewferrier/wrapping.nvim",
+		config = function()
+			require("wrapping").setup()
+		end,
+	},
+	{
+		"toppair/peek.nvim",
+		build = "deno task --quiet build:fast",
+		config = function()
+			require("peek").setup({
+				auto_load = false, -- whether to automatically load preview when
+				-- entering another markdown buffer
+				close_on_bdelete = true, -- close preview window on buffer delete
+
+				syntax = true, -- enable syntax highlighting, affects performance
+
+				theme = "dark", -- 'dark' or 'light'
+
+				update_on_change = true,
+
+				-- relevant if update_on_change is true
+				throttle_at = 200000, -- start throttling when file exceeds this
+				-- amount of bytes in size
+				throttle_time = "auto", -- minimum amount of time in milliseconds
+				-- that has to pass before starting new render
+			})
+		end,
+	},
+	{
+		"metakirby5/codi.vim",
+		cmd = { "Codi" },
+		init = function()
+			vim.cmd([[let g:codi#autocmd="InsertLeave"]])
+		end,
+		config = function()
+			vim.api.nvim_set_keymap("n", "<S-CR>", ":CodiExpand<CR>", {})
+		end,
+	},
+	{ "MaximilianLloyd/ascii.nvim", dependencies = {
+		"MunifTanjim/nui.nvim",
+	} },
 	{
 		"jayp0521/mason-nvim-dap.nvim",
 		dependencies = { { "williamboman/mason.nvim" }, { "mfussenegger/nvim-dap" } },
@@ -19,10 +71,11 @@ lvim.plugins = {
 			require("mason-nvim-dap").setup_handlers()
 		end,
 	},
+	{ "nvim-telescope/telescope-media-files.nvim" },
+	{ "nvim-telescope/telescope-symbols.nvim" },
 	{ "mfussenegger/nvim-jdtls" },
 	{ "mbbill/undotree", cmd = "UndotreeToggle" },
 	{ "shortcuts/no-neck-pain.nvim", cmd = "NoNeckPain" },
-	{ "romainchapou/confiture.nvim", cmd = "Confiture" },
 	{ "tpope/vim-fugitive" },
 	{ "wellle/targets.vim" },
 	{ "junegunn/goyo.vim", ft = { "text" }, cmd = "Goyo" },
