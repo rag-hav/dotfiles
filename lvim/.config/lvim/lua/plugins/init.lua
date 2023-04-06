@@ -1,16 +1,33 @@
 lvim.plugins = {
-	require("plugins._stickybuf"),
+	-- require("plugins._stickybuf"),
 	require("plugins._lsp_signature"),
 	require("plugins._colorizer"),
-	-- require("plugins._markdown-preview"),
+	require("plugins._markdown-preview"),
 	require("plugins._table_mode"),
 	-- require("plugins._instant"),
 	require("plugins._confiture"),
 	-- require("plugins._mind"),
-	require("plugins._orgmode"),
+	-- require("plugins._orgmode"),
 	-- require("plugins._notetaking"),
-	require("plugins._obsidian"),
+	-- require("plugins._obsidian"),
 	require("plugins._clipboard-image"),
+	require("plugins._surround"),
+	require("plugins._subsitute"),
+	require("plugins._treesitter_textobjs"),
+	require("plugins._various_textobjs"),
+	{
+		"letieu/hacker.nvim",
+		config = function()
+			require("hacker").setup({
+				speed = { -- characters insert each time, random from min -> max
+					min = 2,
+					max = 5,
+				},
+				is_popup = false, -- show random float window when typing
+				popup_after = 5,
+			})
+		end,
+	},
 	{
 		"NMAC427/guess-indent.nvim",
 		config = function()
@@ -56,11 +73,11 @@ lvim.plugins = {
 			vim.api.nvim_set_keymap("n", "<S-CR>", ":CodiExpand<CR>", {})
 		end,
 	},
-	{ "MaximilianLloyd/ascii.nvim", dependencies = {
-		"MunifTanjim/nui.nvim",
-	} },
+	-- { "MaximilianLloyd/ascii.nvim", dependencies = {
+	-- 	"MunifTanjim/nui.nvim",
+	-- } },
 	{
-		"jayp0521/mason-nvim-dap.nvim",
+		"jay-babu/mason-nvim-dap.nvim",
 		dependencies = { { "williamboman/mason.nvim" }, { "mfussenegger/nvim-dap" } },
 		config = function()
 			require("mason").setup()
@@ -115,10 +132,6 @@ lvim.plugins = {
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-	},
-	{
-		"tpope/vim-surround",
-		keys = { "c", "d", "y" },
 	},
 	{
 		"mattn/emmet-vim",

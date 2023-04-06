@@ -1,10 +1,11 @@
-alias c='xclip -selection clipboard'
+alias c='wl-copy'
 alias cls=clear
 alias cp='cp -i'
-alias dl='xclip -o | xargs curl'
+alias dl='wl-paste | xargs curl -L'
 alias lg='lazygit'
 alias mv='mv -i'
 alias q=exit
-alias v='xclip -o'
+alias v='wl-paste'
 alias vim="lvim"
 alias svim="sudo $HOME/.local/bin/lvim"
+alias apt="apt-fast"

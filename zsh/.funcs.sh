@@ -280,9 +280,9 @@ precompile() {
 }
 
 journal() {
-    src_dir=$HOME/notes/.journal.encrypted
-    mnt_dir=$HOME/notes/journal
-    bkp_dir=$HOME/notes/journal.backup
+    src_dir=$HOME/notes/.diary.encrypted
+    mnt_dir=$HOME/notes/diary/
+    bkp_dir=$HOME/notes/diary.backup
 
     if [ ! -d $src_dir ]; then 
         recho "Encrypted folder $src_dir does not exist"
@@ -294,7 +294,7 @@ journal() {
 
         "open")
             if [ -f $mnt_dir/.mount ]; then
-                gecho "Journal already oepn"
+                gecho "Journal already open"
             else
                 if [ -d $mnt_dir ]; then 
                     find $mnt_dir -empty -type d -delete
@@ -324,4 +324,5 @@ journal() {
             echo "Invalid command\n Use 'journal open' to decrypt the journal\n 'journal close' to encrypt it\n 'journal flush' to flush it"
             ;;
     esac
+
 }

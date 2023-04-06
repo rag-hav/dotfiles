@@ -7,7 +7,9 @@ lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope pickers<CR>", "Choose a
 lvim.builtin.which_key.mappings["j"] = { "<cmd>Telescope jumplist<CR>", "Jumplist" }
 lvim.builtin.which_key.mappings["T"] = lvim.builtin.which_key.mappings["s"]
 lvim.builtin.which_key.mappings["s"] = { "<cmd>AerialToggle right<CR>", "Show outline of file" }
-lvim.builtin.which_key.mappings["f"] = { "<cmd>Telescope grep_string<CR>", "Find in Files" }
+lvim.builtin.which_key.mappings["?"] = { "<cmd>Telescope grep_string<CR>", "Find word in Files" }
+lvim.builtin.which_key.mappings["W"] = { "<cmd>wa<CR>", "Save All" }
+lvim.builtin.which_key.mappings["f"] = { "<cmd>Telescope live_grep<CR>", "Find in Files" }
 lvim.builtin.which_key.mappings["u"] = { "<cmd>UndotreeToggle<CR>", "Undo Tree" }
 lvim.builtin.which_key.vmappings["s"] = { "<Plug>SearchVisual<CR>", "Search on google" }
 
@@ -20,4 +22,3 @@ lvim.builtin.which_key.mappings["t"] = {
 	l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
 	r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
-

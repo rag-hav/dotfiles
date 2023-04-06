@@ -3,7 +3,7 @@ local Terminal = require("toggleterm.terminal").Terminal
 local Path = require("plenary.path")
 
 return {
-	"epwalsh/obsidian.nvim",
+	"rag-hav/obsidian.nvim",
 	-- dir = "/home/raghav/projects/obsidian.nvim/",
 	-- dev = true,
 	init = function()
@@ -33,22 +33,21 @@ return {
 					float_opts = {
 						border = "curved",
 						width = 20,
-						height = 1,
+						height = 6,
 					},
 					on_exit = function(_, _, exit_code)
-						print("exit " .. cmd)
-						vim.fn.input({ prompt="hi  " })
-						if exit_code == 0 and cmd ~= nil then
-							vim.cmd(string.format("<CMD>%s<CR>", cmd))
-						end
-
+						-- vim.cmd("echo 'hi'")
+						-- if exit_code == 0 and cmd ~= nil then
+							-- vim.cmd(cmd)
+						-- end
 					end,
+
 					on_close = function()
-						print("close " .. cmd)
-						vim.notify(cmd)
-						-- 	if cmd ~= nil then
-						-- 		vim.cmd(string.format("<CMD>%s<CR>", cmd))
-						-- 	end
+						vim.g.hiii = vim.fn.bufnr()
+						-- vim.g.hiii = vim.api.
+					-- 	if cmd ~= nil then
+					-- 		vim.cmd(cmd)
+					-- 	end
 					end,
 				})
 			:open()
@@ -61,15 +60,11 @@ return {
 			n = { makeNewNote, "Create New Note" },
 			b = { "<CMD>ObsidianBacklinks<CR>", "View Backlinks" },
 			t = {
-				function()
-					openJournalThenRun("ObsidianToday")
-				end,
+				"<CMD>ObsidianToday<CR>",
 				"Todays Note",
 			},
 			y = {
-				function()
-					openJournalThenRun("ObsidianYesterday")
-				end,
+				"<CMD>ObsidianYesterday<CR>",
 				"Yesterdays Note",
 			},
 			o = { "<CMD>ObsidianQuickSwitch<CR>", "Open a note" },
@@ -92,7 +87,7 @@ return {
 				nvim_cmp = true,
 			},
 			daily_notes = {
-				folder = "journal/daily",
+				folder = "daily",
 			},
 			note_frontmatter_func = function(note)
 				-- print(vim.inspect(note))

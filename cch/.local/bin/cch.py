@@ -44,7 +44,6 @@ HOST = "127.0.0.1"
 
 
 def pexport(value):
-    print("pexport ", value)
     with open(EXPORTS_FILE, "r") as f:
         txt = f.read()
 
@@ -52,7 +51,6 @@ def pexport(value):
     if newtxt == txt:
         newtxt += f"\nqid='{value}'"
 
-    print(newtxt)
 
     with open(EXPORTS_FILE, "w") as f:
         f.write(newtxt)
@@ -74,7 +72,7 @@ def main():
                 time.sleep(0.5)
                 port += 1
                 if port > 100:
-                    print("Failed to bina a port")
+                    print("Failed to bind a port")
                     exit(1)
         s.listen()
 

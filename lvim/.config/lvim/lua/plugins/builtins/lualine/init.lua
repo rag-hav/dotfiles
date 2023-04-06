@@ -240,6 +240,11 @@ local config = {
 				cond = conditions.hide_in_width,
 			},
 			{ "filesize" },
+			{
+				function()
+					return vim.fn.wordcount()["visual_chars"] or ""
+				end,
+			},
 		},
 		lualine_z = {
 			{ "location", padding = 0 },
