@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
 # If you come from bash you might have to change your $PATH.
 #
 ##
@@ -78,7 +79,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages colorize git-extras node)
+plugins=(zsh-vim-mode git colored-man-pages colorize git-extras node)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -143,3 +144,10 @@ unset __conda_setup
 
 
 if [ -e /home/raghav/.nix-profile/etc/profile.d/nix.sh ]; then . /home/raghav/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/raghav/gcp/google-cloud-sdk/path.zsh.inc' ]; then . '/home/raghav/gcp/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/raghav/gcp/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/raghav/gcp/google-cloud-sdk/completion.zsh.inc'; fi
+# bindkey -v

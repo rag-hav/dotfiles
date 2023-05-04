@@ -9,3 +9,4 @@ alias v='wl-paste'
 alias vim="lvim"
 alias svim="sudo $HOME/.local/bin/lvim"
 alias apt="apt-fast"
+alias tmp="mkdir -p /tmp/raghav/ && cd /tmp/raghav/"

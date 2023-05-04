@@ -2,7 +2,8 @@ lvim.log.level = "warn"
 lvim.leader = "space"
 
 -- lvim.format_on_save = true
-lvim.colorscheme = "onedark"
+vim.o.background = "dark"
+lvim.colorscheme = "gruvbox"
 lvim.builtin.lualine.theme = "onedark"
 vim.g.tokyonight_transparent = true
 vim.opt.timeoutlen = 1000

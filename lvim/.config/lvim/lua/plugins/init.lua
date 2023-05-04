@@ -15,6 +15,7 @@ lvim.plugins = {
 	require("plugins._subsitute"),
 	require("plugins._treesitter_textobjs"),
 	require("plugins._various_textobjs"),
+    {"ellisonleao/gruvbox.nvim", priority = 1000},
 	{
 		"letieu/hacker.nvim",
 		config = function()
@@ -28,12 +29,12 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{
-		"NMAC427/guess-indent.nvim",
-		config = function()
-			require("guess-indent").setup({})
-		end,
-	},
+	-- {
+	-- 	"NMAC427/guess-indent.nvim",
+	-- 	config = function()
+	-- 		require("guess-indent").setup({})
+	-- 	end,
+	-- },
 	{
 		"andrewferrier/wrapping.nvim",
 		config = function()
@@ -85,7 +86,7 @@ lvim.plugins = {
 				automatic_setup = true,
 			})
 
-			require("mason-nvim-dap").setup_handlers()
+			-- require("mason-nvim-dap").setup()
 		end,
 	},
 	{ "nvim-telescope/telescope-media-files.nvim" },
