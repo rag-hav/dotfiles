@@ -116,13 +116,13 @@ lvim.plugins = {
 			require("aerial").setup()
 		end,
 	},
-	{
-		"SmiteshP/nvim-gps",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("nvim-gps").setup()
-		end,
-	},
+	-- {
+	-- 	"SmiteshP/nvim-gps",
+	-- 	dependencies = "nvim-treesitter/nvim-treesitter",
+	-- 	config = function()
+	-- 		require("nvim-gps").setup()
+	-- 	end,
+	-- },
 	{
 		"mattn/vim-gist",
 		dependencies = "mattn/webapi-vim",

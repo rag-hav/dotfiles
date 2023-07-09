@@ -10,3 +10,6 @@ alias vim="lvim"
 alias svim="sudo $HOME/.local/bin/lvim"
 alias apt="apt-fast"
 alias tmp="mkdir -p /tmp/raghav/ && cd /tmp/raghav/"
+alias python="python3"
+alias f='atuin search -i'
+alias killbg='kill ${${(v)jobstates##*:*:}%=*}'     

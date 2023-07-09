@@ -3,7 +3,7 @@ lvim.leader = "space"
 
 -- lvim.format_on_save = true
 vim.o.background = "dark"
-lvim.colorscheme = "gruvbox"
+lvim.colorscheme = "onedark"
 lvim.builtin.lualine.theme = "onedark"
 vim.g.tokyonight_transparent = true
 vim.opt.timeoutlen = 1000

@@ -105,7 +105,7 @@ local config = {
 		icons_enabled = true,
 		component_separators = nil,
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "dashboard", "NvimTree", "Outline", "alpha", "toggleterm", "aerial" },
+		disabled_filetypes = { "", "dashboard", "NvimTree", "Outline", "alpha", "toggleterm", "aerial" },
 	},
 	sections = {
 		lualine_a = {
@@ -138,7 +138,7 @@ local config = {
 				shorting_target = 150,
 				symbols = {
 					modified = "  ", -- Text to show when the file is modified.
-					readonly = "  ", -- Text to show when the file is non-modifiable or readonly.
+					readonly = " 󰏮 ", -- Text to show when the file is non-modifiable or readonly.
 					unnamed = "[No Name]", -- Text to show for unnamed buffers.
 				},
 			},
@@ -154,7 +154,7 @@ local config = {
 			{
 				"diff",
 				source = diff_source,
-				symbols = { added = "  ", modified = "柳", removed = " " },
+				symbols = { added = "  ", modified = "󰝤", removed = " " },
 				diff_color = {
 					added = { fg = colors.git.add },
 					modified = { fg = colors.git.change },
@@ -212,9 +212,9 @@ local config = {
 			-- {
 			-- 	provider = function()
 			-- 		if vim.g.using_persistence then
-			-- 			return "  |"
+			-- 			return "󰅠  |"
 			-- 		elseif vim.g.using_persistence == false then
-			-- 			return "  |"
+			-- 			return "󰅣  |"
 			-- 		end
 			-- 	end,
 			-- 	enabled = function()
@@ -229,7 +229,7 @@ local config = {
 					if not vim.bo.readonly or not vim.bo.modifiable then
 						return ""
 					end
-					return "" -- """
+					return "" -- "󰍁""
 				end,
 				color = { fg = colors.red },
 			},
@@ -264,7 +264,7 @@ local config = {
 				cond = conditions.buffer_not_empty,
 				symbols = {
 					modified = "  ", -- Text to show when the file is modified.
-					readonly = "  ", -- Text to show when the file is non-modifiable or readonly.
+					readonly = " 󰏮 ", -- Text to show when the file is non-modifiable or readonly.
 					unnamed = "[No Name]", -- Text to show for unnamed buffers.
 				},
 			},
