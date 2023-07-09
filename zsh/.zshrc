@@ -13,7 +13,6 @@ fi
 export PATH=$HOME/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.dart-sdk/bin:$HOME/.flutter/bin:/.cargo/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/raghav/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -127,27 +126,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/etc/profile.d/conda.sh" ]; then
-        . "/usr/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-if [ -e /home/raghav/.nix-profile/etc/profile.d/nix.sh ]; then . /home/raghav/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/raghav/gcp/google-cloud-sdk/path.zsh.inc' ]; then . '/home/raghav/gcp/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/raghav/gcp/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/raghav/gcp/google-cloud-sdk/completion.zsh.inc'; fi
 # bindkey -v

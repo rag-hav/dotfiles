@@ -5,5 +5,15 @@
         "lvim",
         "reload",
         "require"
+    ],
+    "workspace.library": [
+        "/Users/raghav.agarwal1/projects/nvim-macos/share/nvim/runtime",
+        "/Users/raghav.agarwal1/.local/share/lunarvim/lvim",
+        "/Users/raghav.agarwal1/.local/share/lunarvim/site/pack/lazy/opt/neodev.nvim/types/stable",
+        "${3rd}/busted/library",
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library",
+        "/Users/raghav.agarwal1/.local/share/lvim/mason/packages/lua-language-server/libexec/meta/12d0da61",
+        "/Users/raghav.agarwal1/.local/share/lvim/mason/packages/lua-language-server/libexec/meta/3d5b794e"
     ]
 }
