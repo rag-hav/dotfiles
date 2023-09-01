@@ -11,7 +11,6 @@ fi
 #
 ##
 export PATH=$HOME/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.dart-sdk/bin:$HOME/.flutter/bin:/.cargo/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="/home/raghav/.oh-my-zsh"
 
@@ -116,6 +115,7 @@ trap "source ~/.zshrc && rehash" USR1
 source ~/.aliases.sh
 source ~/.exports.sh
 source ~/.funcs.sh
+source ~/.hadooprc.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -127,4 +127,17 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
 
-# bindkey -v
+python_venv() {
+  MYVENV=./venv
+  # when you cd into a folder that contains $MYVENV
+  [[ -d $MYVENV ]] && source $MYVENV/bin/activate > /dev/null 2>&1
+  # when you cd into a folder that doesn't
+  if [[ ! -d $MYVENV ]] && type deactivate > /dev/null ; then deactivate > /dev/null 2>&1; fi
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd python_venv
+
+python_venv
+
+eval "$(atuin init zsh)"

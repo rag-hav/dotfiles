@@ -2,9 +2,9 @@ lvim.log.level = "warn"
 lvim.leader = "space"
 
 -- lvim.format_on_save = true
-vim.o.background = "dark"
+-- vim.o.background = "dark"
 lvim.colorscheme = "onedark"
-lvim.builtin.lualine.theme = "onedark"
+-- lvim.builtin.lualine.theme = "onedark"
 vim.g.tokyonight_transparent = true
 vim.opt.timeoutlen = 1000
 vim.opt.cmdheight = 1
@@ -21,9 +21,8 @@ lvim.builtin.global_status_line = { active = true }
 lvim.builtin.cmp.completion = {
 	completeopt = "menu,menuone,noinsert,preview",
 }
-
 -- org mode
-table.insert(lvim.builtin.cmp.sources, {name = "org"})
+table.insert(lvim.builtin.cmp.sources, {name = "copilot"})
 
 lvim.builtin.treesitter.highlight.additional_vim_regex_highlighting = {"markdown"}
 
