@@ -15,27 +15,27 @@ lvim.plugins = {
 	require("plugins._subsitute"),
 	require("plugins._treesitter_textobjs"),
 	require("plugins._various_textobjs"),
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				-- suggestion = { enabled = false },
-				-- panel = { enabled = false },
-			})
-		end,
-	},
-	{
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			-- suggestion = { enabled = false },
+	-- 			-- panel = { enabled = false },
+	-- 		})
+	-- 	end,
+	-- },
+	-- {
 
-		"CRAG666/code_runner.nvim",
-		config = function()
-			require("code_runner").setup({
-				filetype_path = vim.fn.expand("~/.config/nvim/code_runner/files.json"),
-				project_path = vim.fn.expand("~/.config/nvim/code_runner/projects.json"),
-			})
-		end,
-	},
+	-- 	"CRAG666/code_runner.nvim",
+	-- 	config = function()
+	-- 		require("code_runner").setup({
+	-- 			filetype_path = vim.fn.expand("~/.config/nvim/code_runner/files.json"),
+	-- 			project_path = vim.fn.expand("~/.config/nvim/code_runner/projects.json"),
+	-- 		})
+	-- 	end,
+	-- },
 	-- {
 	-- 	"zbirenbaum/copilot-cmp",
 	-- 	config = function()

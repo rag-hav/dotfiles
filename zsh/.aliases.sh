@@ -1,4 +1,5 @@
 alias apt="apt-fast"
+alias fdl='aria2c -j 32 -x 16'
 alias c='wl-copy'
 alias cls=clear
 alias cp='cp -i'
@@ -11,4 +12,4 @@ alias python="python3"
 alias q=exit
 alias tmp="mkdir -p /tmp/raghav/ && cd /tmp/raghav/"
 alias v='wl-paste'
-alias vim='nvim'
+alias vim='lvim'
