@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import socket
 from pid.decorator import pidfile
 from pid import PidFileError
@@ -47,13 +45,11 @@ def pexport(value):
     with open(EXPORTS_FILE, "r") as f:
         txt = f.read()
 
-    newtxt = re.sub(f"qid=.*", f"qid='{value}'", txt)
-    if newtxt == txt:
-        newtxt += f"\nqid='{value}'"
-
+    newtxt = list(filter(lambda a : "qid" not in a, txt.splitlines()))
+    newtxt.append(f"export qid='{value}'")
 
     with open(EXPORTS_FILE, "w") as f:
-        f.write(newtxt)
+        f.write('\n'.join(newtxt))
 
 
 @pidfile("cch", piddir="/tmp/")
@@ -87,6 +83,7 @@ def main():
                 print(data)
                 if "codechef" in data["url"]:
                     qid = data["url"].split("/")[-1]
+                    qid = qid.replace('tabstatement', '')
                     site = "codechef"
 
                 elif "codeforces" in data["url"]:

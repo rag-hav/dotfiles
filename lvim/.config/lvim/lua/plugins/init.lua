@@ -13,8 +13,10 @@ lvim.plugins = {
 	require("plugins._clipboard-image"),
 	require("plugins._surround"),
 	require("plugins._subsitute"),
-	require("plugins._treesitter_textobjs"),
+	-- require("plugins._treesitter_textobjs"),
 	require("plugins._various_textobjs"),
+{"AckslD/swenv.nvim"},
+	{ dir = "~/projects/CompetetiveCompanionRunner/", dev=true },
 	-- {
 	-- 	"zbirenbaum/copilot.lua",
 	-- 	cmd = "Copilot",

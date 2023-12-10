@@ -10,10 +10,10 @@ fi
 # If you come from bash you might have to change your $PATH.
 #
 ##
-export PATH=$HOME/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.dart-sdk/bin:$HOME/.flutter/bin:/.cargo/bin:$PATH
+export PATH=$HOME/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/home/raghav/.oh-my-zsh"
-
+export AUTOSWITCH_SILENT="true"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -49,7 +49,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -78,7 +78,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-vim-mode git colored-man-pages colorize git-extras node)
+plugins=(autoswitch_virtualenv zsh-vim-mode git colored-man-pages colorize git-extras node)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -120,24 +120,8 @@ source ~/.hadooprc.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
 
-python_venv() {
-  MYVENV=./venv
-  # when you cd into a folder that contains $MYVENV
-  [[ -d $MYVENV ]] && source $MYVENV/bin/activate > /dev/null 2>&1
-  # when you cd into a folder that doesn't
-  if [[ ! -d $MYVENV ]] && type deactivate > /dev/null ; then deactivate > /dev/null 2>&1; fi
-}
-
-autoload -U add-zsh-hook
-add-zsh-hook chpwd python_venv
-
-python_venv
 
 eval "$(atuin init zsh)"
